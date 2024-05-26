@@ -1,0 +1,39 @@
+---
+const { title } = Astro.props;
+import "../styles/main.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+// Supports weights 100-900
+import "@fontsource-variable/montserrat";
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="mx-auto">
+    <div class="flex flex-col h-screen justify-between">
+      <header class="max-w-7xl mx-auto"><Nav /></header>
+
+      <main class="mb-auto max-w-7xl mx-auto">
+        <slot />
+      </main>
+      <div class="bg-slate-900">
+        <footer class="max-w-7xl mx-auto">
+          <Footer />
+        </footer>
+      </div>
+    </div>
+    <script
+      data-goatcounter="https://mattolearydesign.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"></script>
+  </body>
+</html>
