@@ -2,52 +2,43 @@
 import { Image } from "astro:assets";
 import image01 from "../assets/image01.jpg";
 import image02 from "../assets/image02.jpg";
-// core version + navigation, pagination modules:
-// Import Swiper and modules
-// import Swiper bundle with all modules installed
-import Swiper from "swiper/bundle";
 
-// import styles bundle
-import "swiper/css/bundle";
+import Swiper, { Navigation, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 ---
 
 <div class="swiper">
-  <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
-    <!-- Slides -->
-    <div class="swiper-slide">
-      <Image src={image01} alt="Decorative" />
-    </div>
     <div class="swiper-slide">
       <Image src={image02} alt="Decorative" />
     </div>
+    <div class="swiper-slide">
+      <Image src={image01} alt="Decorative" />
+    </div>
     ...
   </div>
-  <!-- If we need pagination -->
   <div class="swiper-pagination"></div>
 
-  <!-- If we need navigation buttons -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
 
-  <!-- If we need scrollbar -->
   <div class="swiper-scrollbar"></div>
-</div>
 
-<script>
-  // Initialize Swiper
-  const swiper = new Swiper(".swiper", {
-    // Configure Swiper to use modules
-    modules: [Navigation, Pagination],
-    // Additional configurations
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    });
+  </script>
+</div>
